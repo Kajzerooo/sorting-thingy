@@ -7,7 +7,7 @@
 void Generuj() {
 
     //Ścieżka do pliku
-    const char* nazwa_pliku = "C://Users/artex/downloads/liczby.txt";
+    const char* nazwa_pliku = " ";
 
     //Liczba liczb, masło maślane
     int liczba_liczb = 5000000;
@@ -46,7 +46,8 @@ void Generuj() {
 //------Odczytywanie liczb z powstałego pliku tekstowego.----- [NIE DZIAŁA]
 #define MAX_LICZBY 5000000 // Maksymalna liczba liczb w pliku tekstowym
 int Odczytaj(const char *nazwaPliku, int tablica[], int *iloscLiczb) {
-    nazwaPliku = "C://Users/artex/downloads/liczby.txt";
+    //Ścieżka
+    nazwaPliku = " ";
     FILE *plik;
     plik = fopen(nazwaPliku, "r");
     if (plik == NULL) {
@@ -138,15 +139,15 @@ void QuickSort(int tab_c[], int low, int high) {
         QuickSort(tab_c, pivotIndex + 1, high);
     }
 }
-
+//Ścieżka
 int main() {
-    FILE *file = fopen("C://Users/artex/downloads/liczby.txt", "r");
+    FILE *file = fopen(" ", "r");
     if (file == NULL) {
         printf("Nie można otworzyć pliku.\n");
         return 1;
     }
-
-    const char* nazwa_pliku = "liczby.txt";
+    //Ścieżka
+    const char* nazwa_pliku = " ";
     int tab_a[] = {12, 432, 110, 25, 443, 80, 8080}; //Wewnątrz tablicy prawdopodobnie będzie odnośnik do pliku z liczbami.
     int tab_b[] = {34, 13, 727, 17, 69, 420, 2137}; //Wewnątrz tablicy prawdopodobnie będzie odnośnik do pliku z liczbami.
     int tab_c[] = {16, 54, 88, 96, 1, 3, 1910};
