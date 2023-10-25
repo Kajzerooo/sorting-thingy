@@ -1,0 +1,272 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
+
+
+//-----Generowanie liczb pseudo-losowych do pliku (uzupełnij ścieżkę!)----- [DZIAŁA]
+void Generuj(int tab[]) {
+		srand(time(NULL));
+		
+		for(int i=0; i<=9; i++)
+		{
+			tab[i]=(rand())+1;
+			//printf("%d ", tab[i]);
+			//printf("\n");
+			
+		}
+    //Liczba liczb, masło maślane
+    int liczba_liczb = 10;
+
+    //Zmienne odpowiedzialne za zakres liczb losowanych
+    //int min = 10000;
+    //int max = 5000000;
+    //int zakres = min - max + 1;
+
+    // Inicjalizacja generatora
+    //srand(time(NULL));
+}
+
+//-----Funkcja sortowania bombelkowego----- []
+void BubbleSort(int tab_a[], int a) {
+	//for(int i=0; i<=9; i++)
+	//	{
+	//	printf("%d ", tab_a[i]);
+	//		
+	//	}
+    int i, j;
+    //Kontroluje ilość 'powtórzeń' sortowania
+    for (i = 0; i < a - 1; i++) {
+        //Porownuje ze soba i zamienia elementy w tablicy
+        for (j = 0; j < a - i - 1; j++) {
+            //Jesli sprawdzana liczba jest wieksza od nastepnej
+            if (tab_a[j] > tab_a[j + 1]) {
+                //Zamienia miejscami liczby
+                int temp = tab_a[j];
+                tab_a[j] = tab_a[j + 1];
+                tab_a[j + 1] = temp;
+            }
+        }
+    }
+    
+}
+
+
+//-----Funkcja sortowania Shell Sort----- [DZIAŁA]
+void ShellSort(int Tab_a[], int b) {
+    // Przearanżowuje elementy w interwałach kolejno: b/2, b/4, b/8
+    int interval;
+    for (interval = b/2; interval > 0; interval /= 2) {
+        for (int i = interval; i < b; i += 1) {
+            int temp = Tab_a[i];
+            int j;
+            for (j = i; j >= interval && Tab_a[j - interval] > temp; j -= interval) {
+                Tab_a[j] = Tab_a[j - interval];
+            }
+            Tab_a[j] = temp;
+        }
+    }
+}
+
+
+//-----Funkcja sortowania Quick Sort----- [DZIAŁA]
+    // Funkcja zamieniająca elementy tablicy
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+    // Funkcja partition do wybierania pivota i dzielenia tablicy
+int Partition(int tab_c[], int low, int high) {
+    int pivot = tab_c[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++) {
+        if (tab_c[j] < pivot) {
+            i++;
+            swap(&tab_c[i], &tab_c[j]);
+        }
+    }
+    swap(&tab_c[i + 1], &tab_c[high]);
+    return (i + 1);
+}
+    // Główna funkcja QuickSort
+void QuickSort(int tab_c[], int low, int high) {
+    if (low < high) {
+        int pivotIndex = Partition(tab_c, low, high);
+
+        QuickSort(tab_c, low, pivotIndex - 1);
+        QuickSort(tab_c, pivotIndex + 1, high);
+    }
+}
+
+
+//-----Funkcja Selection Sort----- [DZIAŁA]
+void SelectionSort(int tab_d[], int n){
+int i, j, min_idx;
+
+// Przesuwa granicę nieposortowanej podtablicy jedna po drugiej
+for (i = 0; i < n-1; i++){
+
+// Znajdź najmniejszy element w nieposortowanej tablicy
+min_idx = i;
+
+	for (j = i+1; j < n; j++){
+	    if (tab_d[j] < tab_d[min_idx]){
+		    min_idx = j;
+        }
+	
+// Zamień najmniejszy element z pierwszym elementem		
+        if(min_idx != i){
+	    	swap(&tab_d[min_idx], &tab_d[i]);
+        }
+	}
+}
+
+}
+
+
+//-----Funkcja Comb Sort----- [DZIAŁĄ] //CHATPGPT
+
+void swap2(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void CombSort(int tab_e[], int n) {
+    int gap = n;  // Inicjalizacja odstępu jako rozmiar tablicy
+    float shrink = 1.3;  // Współczynnik zmniejszania odstępu
+
+    int swapped = 1;  // Zmienna flagowa do sprawdzania, czy nastąpiły zamiany
+
+    while (gap > 1 || swapped) {
+        // Oblicz nowy odstęp
+        gap = (int)(gap / shrink);
+        if (gap < 1) {
+            gap = 1;
+        }
+
+        swapped = 0;  // Resetuj flagę zamiany
+
+        // Porównaj elementy w odstępie i zamień je, jeśli to konieczne
+        for (int i = 0; i < n - gap; i++) {
+            if (tab_e[i] > tab_e[i + gap]) {
+                // Zamień elementy
+                int temp = tab_e[i];
+                tab_e[i] = tab_e[i + gap];
+                tab_e[i + gap] = temp;
+                swapped = 1;  // Ustaw flagę zamiany
+            }
+        }
+    }
+}
+
+
+//Ścieżka
+int main() {
+	int size = 10;
+	int tab[size];
+
+//-----------------------------------------------------------------------------
+    // const char* nazwa_pliku = "C://users/User/desktop/liczby.txt";
+    // system("color 0a");
+  
+    // fclose(plik);
+    //memset(tab_a, 0, sizeof(tab_a));
+
+    // for (int i = 0; i < 3; i++) {
+    //     for (int j = 0; j < 2; j++) {
+    //         printf("%d ", tab_a[1]);
+    //     }
+    //     printf("\n");
+    // }
+
+//-----------------------------------------------------------------------------
+    //Ścieżka
+    
+
+    //int tab_a[] = {12, 432, 110, 25, 443, 80, 8080}; 
+    //int tab_b[] = {34, 13, 727, 17, 69, 420, 2137}; 
+    //int tab_c[] = {16, 54, 88, 96, 1, 3, 1910};
+    //int tab_d[] = {11, 43, 88, 321, 666, 873, 1111};
+    //int tab_e[] = {55, 14, 27, 63, 911, 999, 9999};
+    Generuj(tab);
+    
+    int tab_a[size];
+    int tab_b[size];
+    int tab_c[size];
+    int tab_d[size];
+    int tab_e[size];
+    
+	for (int i = 0; i <= size; i++) {
+        tab_a[i] = tab[i];
+    }
+    
+    for (int i = 0; i <= size; i++) {
+        tab_b[i] = tab[i];
+    }
+    
+    for (int i = 0; i <= size; i++) {
+        tab_c[i] = tab[i];
+    }
+    
+    for (int i = 0; i <= size; i++) {
+        tab_d[i] = tab[i];
+    }
+    
+    for (int i = 0; i <= size; i++) {
+        tab_e[i] = tab[i];
+    }
+
+    int a = sizeof(tab_a) / sizeof(tab_a[0]);
+    int b = sizeof(tab_b) / sizeof(tab_b[0]);
+    int c = sizeof(tab_c) / sizeof(tab_c[0]);
+    int d = sizeof(tab_d) / sizeof(tab_d[0]);
+    int e = sizeof(tab_e) / sizeof(tab_e[0]);
+
+    
+    
+//-------------------------------------------------- 
+    //BUBBLE SORT
+    BubbleSort(tab_a, a);
+    printf("\n");
+    printf("Bubble Sorted array: \n");
+    for (int i = 0; i < a; i++){
+        printf("%d ", tab_a[i]);
+    }
+
+//--------------------------------------------------
+    //SHELL SORT
+    ShellSort(tab_b, b);
+    printf("\n\nShell Sorted array: \n");
+    for (int i = 0; i < b; i++){
+        printf("%d ", tab_b[i]);
+    }
+
+//-------------------------------------------------- 
+    //QUICK SORT
+    QuickSort(tab_c, 0, c-1);
+    printf("\n\nQuick Sorted array: \n");
+    for (int i = 0; i < b; i++){
+        printf("%d ", tab_c[i]);
+    }
+
+//--------------------------------------------------
+    //SELECTION SORT
+    SelectionSort(tab_d, d);
+    printf("\n\nSelection Sorted array: \n");
+    for (int i = 0; i < b; i++){
+        printf("%d ", tab_d[i]);
+    }
+
+//--------------------------------------------------
+    //COMB SORT
+    CombSort(tab_e, e);
+    printf("\n\nComb Sorted array: \n");
+    for (int i = 0; i < b; i++){
+        printf("%d ", tab_e[i]);
+    }
+
+return 0;
+}
