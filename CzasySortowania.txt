@@ -1,0 +1,5 @@
+Czas sortowania dla Shell Sort: 3.283000 sekundy
+Czas sortowania dla Bubble Sort: 22.086000 sekundy
+Czas sortowania dla Quick Sort: 3.250000 sekundy
+Czas sortowania dla Selection Sort: 11.134000 sekundy
+Czas sortowania dla Comb Sort: 3.176000 sekundy
